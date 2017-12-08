@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Target Name="GitVersionConfig" BeforeTargets="Build">
+    <Copy SourceFiles="..\..\gitversion.config\GitVersionConfig.yaml" DestinationFolder="..\.." />
+  </Target>
+
+  <Target Name="JenkinsBuild" Condition="'$(Configuration)' == 'Release'" DependsOnTargets="GitVersionConfig;Pack" />
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);SA1633;SA1413;SA1309;SA0001;SA1101</NoWarn>
+    <PackageId>Winton.Extensions.Serialization.Json</PackageId>
+    <Title>Winton Json Serialization Library</Title>
+    <Description>Library for useful Json Serialization classes</Description>
+    <PackageVersion>$(NuGetVersion)</PackageVersion>
+    <Authors>Winton</Authors>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2017 Winton</Copyright>
+    <PackageTags>Winton, Extensions, Serialization, Json, Library</PackageTags>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bt.Tooling.ReSharper" Version="1.2.2" PrivateAssets="All" />
+    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0012" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta004" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

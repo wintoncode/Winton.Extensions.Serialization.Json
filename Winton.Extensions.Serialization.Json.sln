@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5FFC14FE-9832-4057-B016-8D19FB98A26A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+		Jenkinsfile = Jenkinsfile
+		README.md = README.md
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winton.Extensions.Serialization.Json", "src\Winton.Extensions.Serialization.Json\Winton.Extensions.Serialization.Json.csproj", "{719309C1-9D06-425E-A6EF-F07BF3942AA5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Winton.Extensions.Serialization.Json.Tests", "test\Winton.Extensions.Serialization.Json.Tests\Winton.Extensions.Serialization.Json.Tests.csproj", "{0E020472-4EBB-451E-AA79-38DED05576EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DA79939C-7A87-4B6C-8E8F-A0D61C65E874}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F7E3D4D1-0059-480B-A204-BB43C2F73C74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{719309C1-9D06-425E-A6EF-F07BF3942AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{719309C1-9D06-425E-A6EF-F07BF3942AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{719309C1-9D06-425E-A6EF-F07BF3942AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{719309C1-9D06-425E-A6EF-F07BF3942AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E020472-4EBB-451E-AA79-38DED05576EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E020472-4EBB-451E-AA79-38DED05576EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E020472-4EBB-451E-AA79-38DED05576EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E020472-4EBB-451E-AA79-38DED05576EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{719309C1-9D06-425E-A6EF-F07BF3942AA5} = {DA79939C-7A87-4B6C-8E8F-A0D61C65E874}
+		{0E020472-4EBB-451E-AA79-38DED05576EE} = {F7E3D4D1-0059-480B-A204-BB43C2F73C74}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCC14634-2FB9-4A0B-A3BC-48A59F475093}
+	EndGlobalSection
+EndGlobal

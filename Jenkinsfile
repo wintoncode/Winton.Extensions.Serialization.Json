@@ -12,7 +12,7 @@ node {
 		}
 
 		stage("Build") {
-			bat("\"${tool 'MSBuild15'}\" Winton.Extensions.Serialization.Json.sln /t:JenkinsBuild /p:Platform=\"Any CPU\" /p:Configuration=Release")
+			bat("\"${tool 'MSBuild15'}\" /t:JenkinsBuild /p:Configuration=Release")
 		}
 
 		stage("Test") {

@@ -11,12 +11,10 @@ namespace Winton.Extensions.Serialization.Json
         [Fact]
         private void ShouldDeserializeEmpty()
         {
-            var deserialized = new Container<Item>();
-
             const string serialized =
                 "{\"columns\":[\"String\",\"Long\",\"Int\",\"Ignore\",\"Double\",\"Decimal\",\"Char\",\"Bool\"],\"rows\":[]}";
 
-            JsonConvert.DeserializeObject<Container<Item>>(serialized).ShouldBeEquivalentTo(deserialized);
+            JsonConvert.DeserializeObject<Container<Item>>(serialized).Should().BeEquivalentTo(new Container<Item>());
         }
 
         [Fact]
@@ -30,7 +28,7 @@ namespace Winton.Extensions.Serialization.Json
             const string serialized =
                 "{\"columns\":[\"String\",\"Long\",\"Int\",\"Ignore\",\"Double\",\"Decimal\",\"Char\",\"Bool\"],\"rows\":[[\"90\",4,3,\"Ignore\",5.6,7.8,\"2\",true]]}";
 
-            JsonConvert.DeserializeObject<Container<Item>>(serialized).ShouldBeEquivalentTo(deserialized);
+            JsonConvert.DeserializeObject<Container<Item>>(serialized).Should().BeEquivalentTo(deserialized);
         }
 
         [Fact]
@@ -45,7 +43,7 @@ namespace Winton.Extensions.Serialization.Json
             const string serialized =
                 "{\"columns\":[\"String\",\"Long\",\"Int\",\"Ignore\",\"Double\",\"Decimal\",\"Char\",\"Bool\"],\"rows\":[[\"90\",0,3,\"Ignore\",5.6,0.0,\"\\u0000\",false],[null,4,0,\"Ignore\",0.0,7.8,\"2\",false]]}";
 
-            JsonConvert.DeserializeObject<Container<Item>>(serialized).ShouldBeEquivalentTo(deserialized);
+            JsonConvert.DeserializeObject<Container<Item>>(serialized).Should().BeEquivalentTo(deserialized);
         }
 
         [Fact]
@@ -56,7 +54,7 @@ namespace Winton.Extensions.Serialization.Json
 
             var deserialized = new Container<Item>();
 
-            JsonConvert.SerializeObject(deserialized).ShouldBeEquivalentTo(serialized);
+            JsonConvert.SerializeObject(deserialized).Should().BeEquivalentTo(serialized);
         }
 
         [Fact]
@@ -70,7 +68,7 @@ namespace Winton.Extensions.Serialization.Json
                 new Item { Bool = true, Char = '2', Int = 3, Long = 4L, Double = 5.6d, Decimal = 7.8m, String = "90" }
             };
 
-            JsonConvert.SerializeObject(deserialized).ShouldBeEquivalentTo(serialized);
+            JsonConvert.SerializeObject(deserialized).Should().BeEquivalentTo(serialized);
         }
 
         [Fact]
@@ -85,7 +83,7 @@ namespace Winton.Extensions.Serialization.Json
                 new Item { Char = '2', Long = 4L, Decimal = 7.8m }
             };
 
-            JsonConvert.SerializeObject(deserialized).ShouldBeEquivalentTo(serialized);
+            JsonConvert.SerializeObject(deserialized).Should().BeEquivalentTo(serialized);
         }
 
         [JsonConverter(typeof(TabularConverter))]

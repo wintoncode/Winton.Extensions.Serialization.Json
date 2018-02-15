@@ -158,7 +158,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<MultipleBackingFields>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 
@@ -167,7 +167,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<NoBackingField>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 
@@ -176,7 +176,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<OnlyMultipleParameterConstructor>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage(
                            "SingleValueConverter can only be used on types with a constructor taking a single parameter of the same type as its backing field.");
             }
@@ -186,7 +186,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<OnlyParameterlessConstructor>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage(
                            "SingleValueConverter can only be used on types with a constructor taking a single parameter of the same type as its backing field.");
             }
@@ -197,7 +197,7 @@ namespace Winton.Extensions.Serialization.Json
                 Action reading = () =>
                     JsonConvert.DeserializeObject<OnlySingleParameterConstructorTakingWrongType>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage(
                            "SingleValueConverter can only be used on types with a constructor taking a single parameter of the same type as its backing field.");
             }
@@ -229,7 +229,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action writing = () => JsonConvert.SerializeObject(new MultipleBackingFields(1));
 
-                writing.ShouldThrow<JsonSerializationException>()
+                writing.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 
@@ -238,7 +238,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action writing = () => JsonConvert.SerializeObject(new NoBackingField(1));
 
-                writing.ShouldThrow<JsonSerializationException>()
+                writing.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 

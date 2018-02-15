@@ -26,12 +26,7 @@ namespace Winton.Extensions.Serialization.Json
 
             Type underlyingType = Nullable.GetUnderlyingType(objectType);
 
-            if (underlyingType != null)
-            {
-                objectType = underlyingType;
-            }
-
-            TypeInfo typeInfo = objectType.GetTypeInfo();
+            TypeInfo typeInfo = (underlyingType ?? objectType).GetTypeInfo();
 
             Type fieldType = GetSingleFieldInfo(typeInfo).FieldType;
 

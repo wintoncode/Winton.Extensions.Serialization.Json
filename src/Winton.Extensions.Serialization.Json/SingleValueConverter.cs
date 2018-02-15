@@ -19,15 +19,15 @@ namespace Winton.Extensions.Serialization.Json
             JsonSerializer serializer)
         {
             object value = reader.Value;
+            if (value == null)
+            {
+                return null;
+            }
+
             Type underlyingType = Nullable.GetUnderlyingType(objectType);
 
             if (underlyingType != null)
             {
-                if (value == null)
-                {
-                    return null;
-                }
-
                 objectType = underlyingType;
             }
 

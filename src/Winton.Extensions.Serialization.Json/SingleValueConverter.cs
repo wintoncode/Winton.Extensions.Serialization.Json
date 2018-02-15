@@ -18,7 +18,13 @@ namespace Winton.Extensions.Serialization.Json
             object existingValue,
             JsonSerializer serializer)
         {
-            TypeInfo typeInfo = objectType.GetTypeInfo();
+            object value = reader.Value;
+            if (value == null)
+            {
+                return null;
+            }
+
+            TypeInfo typeInfo = (Nullable.GetUnderlyingType(objectType) ?? objectType).GetTypeInfo();
 
             Type fieldType = GetSingleFieldInfo(typeInfo).FieldType;
 
@@ -34,7 +40,7 @@ namespace Winton.Extensions.Serialization.Json
             return constructorInfo.Invoke(
                 new[]
                 {
-                    Convert.ChangeType(reader.Value, fieldType)
+                    Convert.ChangeType(value, fieldType)
                 });
         }
 

@@ -107,12 +107,17 @@ namespace Winton.Extensions.Serialization.Json
         {
             [Theory]
             [InlineData(typeof(decimal))]
+            [InlineData(typeof(decimal?))]
             [InlineData(typeof(int))]
+            [InlineData(typeof(int?))]
             [InlineData(typeof(string))]
             [InlineData(typeof(object))]
             [InlineData(typeof(DecimalValue))]
+            [InlineData(typeof(DecimalValue?))]
             [InlineData(typeof(IntValue))]
+            [InlineData(typeof(IntValue?))]
             [InlineData(typeof(StringValue))]
+            [InlineData(typeof(StringValue?))]
             private void ShouldReturnTrueForAnyType(Type type)
             {
                 var singleValueConverter = new SingleValueConverter();
@@ -130,25 +135,64 @@ namespace Winton.Extensions.Serialization.Json
                 new object[]
                 {
                     "\"test\"",
-                    new StringValue("test")
+                    new StringValue("test"),
+                    typeof(StringValue)
+                },
+                new object[]
+                {
+                    "\"test\"",
+                    (StringValue?)new StringValue("test"),
+                    typeof(StringValue?)
+                },
+                new object[]
+                {
+                    "null",
+                    null,
+                    typeof(StringValue?)
                 },
                 new object[]
                 {
                     "1",
-                    new IntValue(1)
+                    new IntValue(1),
+                    typeof(IntValue)
+                },
+                new object[]
+                {
+                    "1",
+                    (IntValue?)new IntValue(1),
+                    typeof(IntValue?)
+                },
+                new object[]
+                {
+                    "null",
+                    null,
+                    typeof(IntValue?)
                 },
                 new object[]
                 {
                     "1.3",
-                    new DecimalValue(1.3M)
+                    new DecimalValue(1.3M),
+                    typeof(DecimalValue)
+                },
+                new object[]
+                {
+                    "1.3",
+                    (DecimalValue?)new DecimalValue(1.3M),
+                    typeof(DecimalValue?)
+                },
+                new object[]
+                {
+                    "null",
+                    null,
+                    typeof(DecimalValue?)
                 }
             };
 
             [Theory]
             [MemberData(nameof(ReadTestCases))]
-            private void ShouldRead(string value, object expected)
+            private void ShouldRead(string value, object expected, Type type)
             {
-                object actual = JsonConvert.DeserializeObject(value, expected.GetType());
+                object actual = JsonConvert.DeserializeObject(value, type);
 
                 actual.Should().Be(expected);
             }
@@ -158,7 +202,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<MultipleBackingFields>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 
@@ -167,7 +211,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<NoBackingField>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 
@@ -176,7 +220,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<OnlyMultipleParameterConstructor>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage(
                            "SingleValueConverter can only be used on types with a constructor taking a single parameter of the same type as its backing field.");
             }
@@ -186,7 +230,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action reading = () => JsonConvert.DeserializeObject<OnlyParameterlessConstructor>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage(
                            "SingleValueConverter can only be used on types with a constructor taking a single parameter of the same type as its backing field.");
             }
@@ -197,7 +241,7 @@ namespace Winton.Extensions.Serialization.Json
                 Action reading = () =>
                     JsonConvert.DeserializeObject<OnlySingleParameterConstructorTakingWrongType>("1");
 
-                reading.ShouldThrow<JsonSerializationException>()
+                reading.Should().Throw<JsonSerializationException>()
                        .WithMessage(
                            "SingleValueConverter can only be used on types with a constructor taking a single parameter of the same type as its backing field.");
             }
@@ -214,13 +258,51 @@ namespace Winton.Extensions.Serialization.Json
                 },
                 new object[]
                 {
+                    (StringValue?)new StringValue("test"),
+                    "\"test\""
+                },
+                new object[]
+                {
+                    // ReSharper disable once RedundantCast
+                    (StringValue?)null,
+                    "null"
+                },
+                new object[]
+                {
                     new IntValue(1),
                     "1"
                 },
                 new object[]
                 {
+                    (IntValue?)new IntValue(1),
+                    "1"
+                },
+                new object[]
+                {
+                    // ReSharper disable once RedundantCast
+                    (IntValue?)null,
+                    "null"
+                },
+                new object[]
+                {
                     new DecimalValue(1.3M),
                     "1.3"
+                },
+                new object[]
+                {
+                    (DecimalValue?)new DecimalValue(1.3M),
+                    "1.3"
+                },
+                new object[]
+                {
+                    // ReSharper disable once RedundantCast
+                    (DecimalValue?)null,
+                    "null"
+                },
+                new object[]
+                {
+                    null,
+                    "null"
                 }
             };
 
@@ -229,7 +311,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action writing = () => JsonConvert.SerializeObject(new MultipleBackingFields(1));
 
-                writing.ShouldThrow<JsonSerializationException>()
+                writing.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 
@@ -238,7 +320,7 @@ namespace Winton.Extensions.Serialization.Json
             {
                 Action writing = () => JsonConvert.SerializeObject(new NoBackingField(1));
 
-                writing.ShouldThrow<JsonSerializationException>()
+                writing.Should().Throw<JsonSerializationException>()
                        .WithMessage("SingleValueConverter can only be used on types with a single backing field.");
             }
 

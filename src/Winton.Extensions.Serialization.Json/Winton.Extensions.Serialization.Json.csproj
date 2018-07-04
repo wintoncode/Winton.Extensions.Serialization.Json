@@ -1,34 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Target Name="GitVersionConfig" BeforeTargets="Build">
-    <Copy SourceFiles="..\..\gitversion.config\GitVersionConfig.yaml" DestinationFolder="..\.." />
-  </Target>
-
-  <Target Name="JenkinsBuild" Condition="'$(Configuration)' == 'Release'" DependsOnTargets="GitVersionConfig;Pack" />
-
   <PropertyGroup>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);SA1633;SA1413;SA1309;SA0001;SA1101</NoWarn>
-    <PackageId>Winton.Extensions.Serialization.Json</PackageId>
-    <Title>Winton Json Serialization Library</Title>
-    <Description>Library for useful Json Serialization classes</Description>
-    <PackageVersion>$(NuGetVersion)</PackageVersion>
     <Authors>Winton</Authors>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2017 Winton</Copyright>
+    <Company>Winton</Company>
+    <Copyright>Copyright 2018 Winton</Copyright>
+    <Description>Library for useful Json Serialization classes.</Description>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GetVersion>False</GetVersion>
+    <NoWarn>$(NoWarn);SA1413</NoWarn>
+    <PackageId>Winton.Extensions.Serialization.Json</PackageId>
+    <PackageIconUrl>https://raw.githubusercontent.com/wintoncode/Winton.Extensions.Serialization.Json/master/icon.jpg</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/wintoncode/Winton.Extensions.Serialization.Json/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/wintoncode/Winton.Extensions.Serialization.Json</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageTags>Winton, Extensions, Serialization, Json, Library</PackageTags>
+    <PackageVersion>$(NuGetVersion)</PackageVersion>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/wintoncode/Winton.Extensions.Serialization.Json</RepositoryUrl>
     <TargetFramework>netstandard1.0</TargetFramework>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Title>Winton Json Serialization Library</Title>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <WriteVersionInfoToBuildLog>False</WriteVersionInfoToBuildLog>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\stylecop.json" />
+    <AdditionalFiles Include="../../stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bt.Tooling.ReSharper" Version="1.3.0" PrivateAssets="All" />
     <PackageReference Include="GitVersionTask" Version="4.0.0-beta0012" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta004" PrivateAssets="All" />
   </ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@
     <Authors>Winton</Authors>
     <Company>Winton</Company>
     <Copyright>Copyright 2018 Winton</Copyright>
-    <Description>Library for useful Json Serialization classes.</Description>
+    <Description>A library containing useful JSON serialization classes.</Description>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GetVersion>False</GetVersion>
     <NoWarn>$(NoWarn);SA1413</NoWarn>

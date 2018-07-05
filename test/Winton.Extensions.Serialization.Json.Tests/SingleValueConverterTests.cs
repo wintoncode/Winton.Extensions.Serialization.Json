@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Winton. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+
+using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Newtonsoft.Json;
@@ -37,11 +40,10 @@ namespace Winton.Extensions.Serialization.Json
         {
             // ReSharper disable once NotAccessedField.Local
             private readonly int _value1;
-#pragma warning disable 414
+            #pragma warning disable 414
             private readonly int _value2;
-#pragma warning restore 414
+            #pragma warning restore 414
 
-            // ReSharper disable once UnusedParameter.Local
             public MultipleBackingFields(int value)
             {
                 _value1 = value;
@@ -74,9 +76,9 @@ namespace Winton.Extensions.Serialization.Json
         [JsonConverter(typeof(SingleValueConverter))]
         public struct OnlyParameterlessConstructor
         {
-#pragma warning disable 169
+            #pragma warning disable 169
             private readonly int _value;
-#pragma warning restore 169
+            #pragma warning restore 169
         }
 
         [JsonConverter(typeof(SingleValueConverter))]

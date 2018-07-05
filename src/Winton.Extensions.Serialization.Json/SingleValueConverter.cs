@@ -1,17 +1,27 @@
-﻿using System;
+﻿// Copyright (c) Winton. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+
+using System;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
 namespace Winton.Extensions.Serialization.Json
 {
+    /// <inheritdoc />
+    /// <summary>
+    ///     A <see cref="JsonConverter" /> for serializing types with a single backing field as the value of that field, and
+    ///     deserializing back to the original type.
+    /// </summary>
     public class SingleValueConverter : JsonConverter
     {
+        /// <inheritdoc />
         public override bool CanConvert(Type objectType)
         {
             return true;
         }
 
+        /// <inheritdoc />
         public override object ReadJson(
             JsonReader reader,
             Type objectType,
@@ -44,6 +54,7 @@ namespace Winton.Extensions.Serialization.Json
                 });
         }
 
+        /// <inheritdoc />
         public override void WriteJson(
             JsonWriter writer,
             object value,

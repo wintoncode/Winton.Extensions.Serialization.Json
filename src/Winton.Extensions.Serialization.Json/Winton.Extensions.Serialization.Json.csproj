@@ -9,7 +9,7 @@
     <NoWarn>$(NoWarn);SA1413</NoWarn>
     <PackageId>Winton.Extensions.Serialization.Json</PackageId>
     <PackageIconUrl>https://raw.githubusercontent.com/wintoncode/Winton.Extensions.Serialization.Json/master/icon.jpg</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/wintoncode/Winton.Extensions.Serialization.Json/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/wintoncode/Winton.Extensions.Serialization.Json</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageTags>Winton, Extensions, Serialization, Json, Library</PackageTags>
@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <AdditionalFiles Include="../../stylecop.json" />
+    <None Include="../../LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
   <ItemGroup>

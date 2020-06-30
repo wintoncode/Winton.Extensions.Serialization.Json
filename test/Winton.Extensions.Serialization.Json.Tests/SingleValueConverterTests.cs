@@ -132,7 +132,7 @@ namespace Winton.Extensions.Serialization.Json
 
         public sealed class ReadJson : SingleValueConverterTests
         {
-            public static IEnumerable<object[]> ReadTestCases => new List<object[]>
+            public static IEnumerable<object?[]> ReadTestCases => new List<object?[]>
             {
                 new object[]
                 {
@@ -146,7 +146,7 @@ namespace Winton.Extensions.Serialization.Json
                     (StringValue?)new StringValue("test"),
                     typeof(StringValue?)
                 },
-                new object[]
+                new object?[]
                 {
                     "null",
                     null,
@@ -164,7 +164,7 @@ namespace Winton.Extensions.Serialization.Json
                     (IntValue?)new IntValue(1),
                     typeof(IntValue?)
                 },
-                new object[]
+                new object?[]
                 {
                     "null",
                     null,
@@ -182,7 +182,7 @@ namespace Winton.Extensions.Serialization.Json
                     (DecimalValue?)new DecimalValue(1.3M),
                     typeof(DecimalValue?)
                 },
-                new object[]
+                new object?[]
                 {
                     "null",
                     null,
@@ -192,7 +192,7 @@ namespace Winton.Extensions.Serialization.Json
 
             [Theory]
             [MemberData(nameof(ReadTestCases))]
-            private void ShouldRead(string value, object expected, Type type)
+            private void ShouldRead(string value, object? expected, Type type)
             {
                 object actual = JsonConvert.DeserializeObject(value, type);
 
@@ -251,7 +251,7 @@ namespace Winton.Extensions.Serialization.Json
 
         public sealed class WriteJson : SingleValueConverterTests
         {
-            public static IEnumerable<object[]> WriteTestCases => new List<object[]>
+            public static IEnumerable<object?[]> WriteTestCases => new List<object?[]>
             {
                 new object[]
                 {
@@ -263,7 +263,7 @@ namespace Winton.Extensions.Serialization.Json
                     (StringValue?)new StringValue("test"),
                     "\"test\""
                 },
-                new object[]
+                new object?[]
                 {
                     // ReSharper disable once RedundantCast
                     (StringValue?)null,
@@ -279,7 +279,7 @@ namespace Winton.Extensions.Serialization.Json
                     (IntValue?)new IntValue(1),
                     "1"
                 },
-                new object[]
+                new object?[]
                 {
                     // ReSharper disable once RedundantCast
                     (IntValue?)null,
@@ -295,13 +295,13 @@ namespace Winton.Extensions.Serialization.Json
                     (DecimalValue?)new DecimalValue(1.3M),
                     "1.3"
                 },
-                new object[]
+                new object?[]
                 {
                     // ReSharper disable once RedundantCast
                     (DecimalValue?)null,
                     "null"
                 },
-                new object[]
+                new object?[]
                 {
                     null,
                     "null"

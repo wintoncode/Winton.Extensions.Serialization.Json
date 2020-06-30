@@ -1,24 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Authors>Winton</Authors>
-    <Company>Winton</Company>
-    <Copyright>Copyright 2018 Winton</Copyright>
     <Description>A library containing useful JSON serialization classes.</Description>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);SA1413</NoWarn>
+    <IncludeSymbols>true</IncludeSymbols>
     <PackageId>Winton.Extensions.Serialization.Json</PackageId>
-    <PackageIconUrl>https://raw.githubusercontent.com/wintoncode/Winton.Extensions.Serialization.Json/master/icon.jpg</PackageIconUrl>
+    <PackageIcon>icon.jpg</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/wintoncode/Winton.Extensions.Serialization.Json</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageTags>Winton, Extensions, Serialization, Json, Library</PackageTags>
-    <PackageVersion>$(NuGetVersion)</PackageVersion>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/wintoncode/Winton.Extensions.Serialization.Json</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFramework>netstandard1.0</TargetFramework>
     <Title>Winton Json Serialization Library</Title>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -26,13 +23,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="../../stylecop.json" />
+    <None Include="../../icon.jpg" Pack="true" PackagePath="" />
     <None Include="../../LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta004" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

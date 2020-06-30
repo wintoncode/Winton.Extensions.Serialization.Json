@@ -1,7 +1,7 @@
 # Winton.Extensions.Serialization.Json
 
-[![Build status](https://ci.appveyor.com/api/projects/status/avnm0rp56l5u1isw?svg=true)](https://ci.appveyor.com/project/wintoncode/winton-extensions-serialization-json/branch/master)
-[![Travis Build Status](https://travis-ci.org/wintoncode/Winton.Extensions.Serialization.Json.svg?branch=master)](https://travis-ci.org/wintoncode/Winton.Extensions.Serialization.Json)
+[![Appveyor](https://ci.appveyor.com/api/projects/status/avnm0rp56l5u1isw?svg=true)](https://ci.appveyor.com/project/wintoncode/winton-extensions-serialization-json/branch/master)
+[![Travis CI](https://travis-ci.com/wintoncode/Winton.Extensions.Serialization.Json.svg?branch=master)](https://travis-ci.com/wintoncode/Winton.Extensions.Serialization.Json)
 [![NuGet version](https://img.shields.io/nuget/v/Winton.Extensions.Serialization.Json.svg)](https://www.nuget.org/packages/Winton.Extensions.Serialization.Json)
 [![NuGet version](https://img.shields.io/nuget/vpre/Winton.Extensions.Serialization.Json.svg)](https://www.nuget.org/packages/Winton.Extensions.Serialization.Json)
 

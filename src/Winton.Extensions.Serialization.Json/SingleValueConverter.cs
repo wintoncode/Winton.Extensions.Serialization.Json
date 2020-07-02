@@ -22,7 +22,7 @@ namespace Winton.Extensions.Serialization.Json
         }
 
         /// <inheritdoc />
-        public override object ReadJson(
+        public override object? ReadJson(
             JsonReader reader,
             Type objectType,
             object existingValue,
